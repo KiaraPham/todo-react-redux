@@ -18,7 +18,7 @@ const AddTodo = ({dispatch}) => {
         }}>
         <input ref={node => input = node} placeholder="What needs to be done?"/>
 
-        <button type="submit">
+        <button className='btn btn-info' type="submit">
           Add
         </button>
       </form>

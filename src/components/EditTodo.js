@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { Modal } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import {Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faEdit} from '@fortawesome/free-solid-svg-icons'
 
 
 class EditTodo extends React.Component {
@@ -21,7 +21,7 @@ class EditTodo extends React.Component {
     this.setState({show: true});
   }
 
-  render(){
+  render() {
 
     return (
       <div>
@@ -34,9 +34,9 @@ class EditTodo extends React.Component {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
-              <input/>
-            </form>
+            {/*<form>*/}
+              {/*<input/>*/}
+            {/*</form>*/}
             <h4>Text in a modal</h4>
             <p>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
