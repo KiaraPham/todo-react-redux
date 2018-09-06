@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-bootstrap'
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -26,8 +25,7 @@ class EditTodo extends React.Component {
 
     return (
       <div>
-
-        <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
+        <Button bsStyle="info" bsSize="large" onClick={this.handleShow}>
           <FontAwesomeIcon icon={faEdit}/>
         </Button>
 
@@ -36,6 +34,9 @@ class EditTodo extends React.Component {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <form>
+              <input/>
+            </form>
             <h4>Text in a modal</h4>
             <p>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.

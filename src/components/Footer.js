@@ -1,5 +1,7 @@
 import React from 'react'
 import FilterLink from "../containers/FilterLink";
+import PropTypes from 'prop-types'
+
 import {VisibilityFilters} from "../actions";
 
 class Footer extends React.Component {

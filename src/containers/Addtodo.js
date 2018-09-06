@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {addTodo} from '../actions';
 
 const AddTodo = ({dispatch}) => {
-  let input
+  let input;
   return (
     <div>
-      <h1>todos</h1>
+      <h1>Todo App</h1>
       <form
         onSubmit={e => {
           e.preventDefault()
@@ -17,6 +17,7 @@ const AddTodo = ({dispatch}) => {
           input.value = ''
         }}>
         <input ref={node => input = node} placeholder="What needs to be done?"/>
+
         <button type="submit">
           Add
         </button>
