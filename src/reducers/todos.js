@@ -22,14 +22,11 @@ const todo = (state, action) => {
   }
 }
 
-const todos = (state = {past:'',future:'',todoList:[]}, action) => {
+const todos = (state = {past:[],future:[],present:[]}, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      return [
-        {...state, todoList: [...state.todoList]},
-        // ...state,
-        // todo(undefined, action)
-      ]
+      console.log(state)
+      return {...state, present: [...state.present, todo(undefined, action)]}
     case 'TOGGLE_TODO':
       return state.map(t =>
         todo(t, action)
