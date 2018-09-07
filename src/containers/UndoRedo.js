@@ -4,14 +4,14 @@ import {connect} from 'react-redux'
 import {Button} from 'react-bootstrap'
 
 let UndoRedo = ({canUndo, canRedo, onUndo, onRedo}) => (
-  <p>
+  <div>
     <Button onClick={onUndo} disabled={!canUndo}>
       Undo
     </Button>
     <Button onClick={onRedo} disabled={!canRedo}>
       Redo
     </Button>
-  </p>
+  </div>
 )
 
 

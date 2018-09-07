@@ -9,7 +9,8 @@ class EditTodo extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      show: false
+      show: false,
+      text: this.props.text
     }
   }
 
@@ -27,15 +28,21 @@ class EditTodo extends React.Component {
     })
   }
 
-  static getDerivedStateFromProps(prevState, nextProps){
-    if (prevState.prevText !== nextProps.text) {
-      return {
-        text : nextProps.text,
-        prevText: nextProps.text,
-      };
-    }
-    return null
+  handleClickSave = () => {
+    this.setState({
+      show: false
+    })
   }
+
+  // static getDerivedStateFromProps(prevState, nextProps){
+  //   if (prevState.prevText !== nextProps.text) {
+  //     return {
+  //       text : nextProps.text,
+  //       prevText: nextProps.text,
+  //     };
+  //   }
+  //   return null
+  // }
 
   render() {
 
@@ -55,7 +62,7 @@ class EditTodo extends React.Component {
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={()=>this.props.editTodo(this.state.text, this.state.id)}>Save</Button>
+            <Button onClick={()=>{this.props.editTodo(this.state.text, this.props.id); this.handleClickSave()}}>Save</Button>
           </Modal.Footer>
         </Modal>
       </span>
