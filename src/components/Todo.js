@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditTodo from './EditTodo';
 
-const Todo = ({onClick, completed, text}) => (
-  <div>
+const Todo = ({onClick, completed, text, id, editTodo}) => (
+  <span className='row'>
     <li
+      className='col-lg-10'
       onClick={onClick}
       style={{
         textDecoration: completed ? 'line-through' : 'none'
@@ -13,8 +14,8 @@ const Todo = ({onClick, completed, text}) => (
       {text}
     </li>
 
-    <EditTodo/>
-  </div>
+    <EditTodo className='col-lg-2' text={text} id={id} editTodo={editTodo}/>
+  </span>
 )
 
 Todo.propTypes = {

@@ -21,11 +21,27 @@ class EditTodo extends React.Component {
     this.setState({show: true});
   }
 
+  handleTextChange = e => {
+    this.setState({
+      text: e.target.value
+    })
+  }
+
+  static getDerivedStateFromProps(prevState, nextProps){
+    if (prevState.prevText !== nextProps.text) {
+      return {
+        text : nextProps.text,
+        prevText: nextProps.text
+      };
+    }
+    return null
+  }
+
   render() {
 
     return (
-      <div>
-        <Button bsStyle="info" bsSize="large" onClick={this.handleShow}>
+      <span>
+        <Button bsStyle="info" onClick={this.handleShow}>
           <FontAwesomeIcon icon={faEdit}/>
         </Button>
 
@@ -34,19 +50,16 @@ class EditTodo extends React.Component {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {/*<form>*/}
-              {/*<input/>*/}
-            {/*</form>*/}
+            <form>
+              <input value={this.state.text} onChange={this.handleTextChange} />
+            </form>
             <h4>Text in a modal</h4>
-            <p>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </p>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.handleClose}>Close</Button>
+            <Button onClick={()=>this.props.editTodo(this.state.text, this.state.id)}>Save</Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </span>
     );
   }
 }

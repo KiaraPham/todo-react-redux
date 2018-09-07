@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import Footer from "./components/Footer";
 import AddTodo from "./containers/Addtodo";
 import VisibleTodoList from "./containers/VisibleTodoList";
-import EditTodo from "./components/EditTodo";
-
+import './App.css'
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className='container app-wrapper '>
+        <div >
         <AddTodo/>
         <VisibleTodoList/>
         <Footer/>
-        <EditTodo/>
+        </div>
       </div>
     );
   }
