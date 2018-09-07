@@ -1,29 +1,44 @@
-const todos = (state = [], action) => {
+import undoable, { includeAction } from 'redux-undo'
+
+const todo = (state, action) => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return {
+        id: action.id,
+        text: action.text,
+        completed: false
+      }
+    case 'TOGGLE_TODO':
+      if (state.id !== action.id) {
+        return state
+      }
+
+      return {
+        ...state,
+        completed: !state.completed
+      }
+    default:
+      return state
+  }
+}
+
+const todos = (state = {past:'',future:'',todoList:[]}, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
+        {...state, todoList: [...state.todoList]},
+        // ...state,
+        // todo(undefined, action)
       ]
     case 'TOGGLE_TODO':
-      return state.map(todo =>
-        (todo.id === action.id)
-          ? {...todo, completed: !todo.completed}
-          : todo
-      )
-    case 'EDIT_TODO':
-      return state.map(todo =>
-        (todo.id === action.id)
-          ? {...todo, text: action.newText}
-          : todo
+      return state.map(t =>
+        todo(t, action)
       )
     default:
       return state
   }
 }
 
-export default todos
+const undoableTodos = undoable(todos, { filter: includeAction(['ADD_TODO', 'TOGGLE_TODO']) })
+
+export default undoableTodos

@@ -31,7 +31,7 @@ class EditTodo extends React.Component {
     if (prevState.prevText !== nextProps.text) {
       return {
         text : nextProps.text,
-        prevText: nextProps.text
+        prevText: nextProps.text,
       };
     }
     return null
@@ -47,13 +47,12 @@ class EditTodo extends React.Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Edit your task</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
               <input value={this.state.text} onChange={this.handleTextChange} />
             </form>
-            <h4>Text in a modal</h4>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={()=>this.props.editTodo(this.state.text, this.state.id)}>Save</Button>
